@@ -9,14 +9,14 @@
     
     <style>
         :root {
-            /* Paleta Verde Cemento Protagonista */
-            --verde-cemento: #8e9596;
-            --verde-claro: #bac3c4;
-            --verde-oscuro: #5a6061;
-            --verde-muy-oscuro: #3e4445;
+            /* Paleta Verde Cemento (Ajustada con más presencia de verde) */
+            --verde-cemento: #7a968c;
+            --verde-claro: #a8bdb5;
+            --verde-oscuro: #4f665e;
+            --verde-muy-oscuro: #364a43;
             --acento-brillo: #d9d2c5; /* Beige suave plateado */
-            --texto-oscuro: #2c3031;
-            --texto-claro: #4b5253;
+            --texto-oscuro: #232e2a;
+            --texto-claro: #4a5c55;
             --blanco: #ffffff;
             --fuente-titulos: 'Playfair Display', serif;
             --fuente-texto: 'Montserrat', sans-serif;
@@ -27,7 +27,7 @@
 
         body {
             font-family: var(--fuente-texto);
-            color: var(--blanco); /* El texto fuera de tarjetas ahora es blanco por el fondo oscuro */
+            color: var(--blanco);
             /* Fondo principal Verde Cemento */
             background: linear-gradient(-45deg, var(--verde-oscuro), var(--verde-cemento), var(--verde-claro), var(--verde-oscuro));
             background-size: 400% 400%;
@@ -44,9 +44,9 @@
         #particles-js { position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; z-index: -1; pointer-events: none; }
         #sparkles-container { position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; z-index: 15; pointer-events: none; }
 
-        /* Estilos Tarjetas con Brillo (Aclaradas para contrastar con el fondo Verde Cemento) */
+        /* Estilos Tarjetas con Brillo */
         .glass-card {
-            background: rgba(255, 255, 255, 0.85); /* Más opacas para asegurar legibilidad */
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.9);
@@ -54,7 +54,7 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25), inset 0 0 15px rgba(255,255,255,0.8);
             position: relative;
             overflow: hidden;
-            color: var(--texto-oscuro); /* El texto dentro de las tarjetas es oscuro */
+            color: var(--texto-oscuro);
         }
 
         /* Destello animado sobre las tarjetas */
@@ -74,12 +74,12 @@
             100% { left: 200%; }
         }
 
-        /* --- SOBRE (Ahora dominado por Verde Cemento) --- */
+        /* --- SOBRE --- */
         #envelope-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: radial-gradient(circle, var(--verde-claro) 0%, var(--verde-muy-oscuro) 100%); display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999; transition: opacity 1.5s ease; }
         .envelope-wrapper { position: relative; width: 320px; height: 220px; cursor: pointer; animation: float 3s ease-in-out infinite, pulseGlow 2s infinite alternate; perspective: 1000px; }
         
         @keyframes pulseGlow {
-            0% { filter: drop-shadow(0 0 15px rgba(186, 195, 196, 0.3)); }
+            0% { filter: drop-shadow(0 0 15px rgba(168, 189, 181, 0.4)); }
             100% { filter: drop-shadow(0 0 35px rgba(255, 255, 255, 0.6)); }
         }
         @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
@@ -87,7 +87,7 @@
         .envelope-body { position: absolute; bottom: 0; width: 100%; height: 100%; background: linear-gradient(135deg, var(--verde-oscuro), var(--verde-muy-oscuro)); border-radius: 10px; z-index: 2; box-shadow: 0 15px 30px rgba(0,0,0,0.4); }
         .envelope-flap { position: absolute; top: 0; left: 0; width: 100%; height: 120px; background: linear-gradient(to bottom, var(--verde-claro), var(--verde-cemento)); clip-path: polygon(0 0, 50% 100%, 100% 0); transform-origin: top; transition: transform 0.6s ease-in-out; z-index: 4; }
         .envelope-letter { position: absolute; bottom: 10px; left: 10px; width: 300px; height: 200px; background: var(--blanco); border-radius: 8px; display: flex; justify-content: center; align-items: center; z-index: 1; transition: transform 1s ease-in-out 0.6s; border: 2px solid var(--verde-cemento); }
-        .envelope-letter h2 { font-family: var(--fuente-nombres); font-size: 3rem; color: var(--verde-oscuro); text-align: center; text-shadow: 0 0 5px rgba(142,149,150,0.3); }
+        .envelope-letter h2 { font-family: var(--fuente-nombres); font-size: 3rem; color: var(--verde-oscuro); text-align: center; text-shadow: 0 0 5px rgba(122,150,140,0.3); }
         .wax-seal { position: absolute; top: 100px; left: 50%; transform: translateX(-50%); width: 60px; height: 60px; background: radial-gradient(circle, var(--acento-brillo) 0%, #b8af9f 100%); border-radius: 50%; z-index: 5; display: flex; justify-content: center; align-items: center; font-family: var(--fuente-titulos); color: white; font-size: 1.8rem; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border: 2px solid rgba(255,255,255,0.5); }
         .open-envelope .wax-seal { opacity: 0; }
         .open-envelope .envelope-flap { transform: rotateX(180deg); z-index: 0; }
@@ -117,8 +117,7 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            /* Filtro oscuro para resaltar la foto y el texto */
-            background: radial-gradient(circle, rgba(90,96,97,0.2) 0%, rgba(44,48,49,0.8) 100%);
+            background: radial-gradient(circle, rgba(54,74,67,0.2) 0%, rgba(35,46,42,0.8) 100%);
             z-index: 1;
         }
 
@@ -241,7 +240,7 @@
             font-family: var(--fuente-texto); color: var(--texto-oscuro); outline: none;
             transition: 0.3s; font-size: 1rem;
         }
-        input:focus, select:focus, textarea:focus { border-color: var(--verde-oscuro); box-shadow: 0 0 15px rgba(142,149,150,0.5); }
+        input:focus, select:focus, textarea:focus { border-color: var(--verde-oscuro); box-shadow: 0 0 15px rgba(122,150,140,0.5); }
 
         /* --- BOTÓN DE MÚSICA STICKY --- */
         .music-btn {
@@ -332,12 +331,12 @@
         <!-- PADRES Y PADRINOS -->
         <section class="reveal">
             <div class="glass-card" style="padding: 50px 30px; margin-bottom: 30px;">
-                <i class="fa-solid fa-heart" style="font-size: 2.5rem; color: var(--verde-cemento); margin-bottom: 15px; text-shadow: 0 0 10px rgba(142, 149, 150, 0.4);"></i>
+                <i class="fa-solid fa-heart" style="font-size: 2.5rem; color: var(--verde-cemento); margin-bottom: 15px; text-shadow: 0 0 10px rgba(122, 150, 140, 0.4);"></i>
                 <p style="color: var(--verde-oscuro); letter-spacing: 4px; font-size: 0.95rem; font-weight: 700; margin-bottom: 15px;">MIS PADRES</p>
                 <p style="font-family: var(--fuente-titulos); font-size: 1.8rem; line-height: 1.4; color: var(--texto-oscuro);">Marina Aidee Martínez Rodríguez<br><span style="font-size:1.4rem; font-style:italic; color:var(--verde-cemento);">&</span><br>Brian Eduardo González Montoya</p>
             </div>
             <div class="glass-card" style="padding: 50px 30px;">
-                <i class="fa-solid fa-dove" style="font-size: 2.5rem; color: var(--verde-cemento); margin-bottom: 15px; text-shadow: 0 0 10px rgba(142, 149, 150, 0.4);"></i>
+                <i class="fa-solid fa-dove" style="font-size: 2.5rem; color: var(--verde-cemento); margin-bottom: 15px; text-shadow: 0 0 10px rgba(122, 150, 140, 0.4);"></i>
                 <p style="color: var(--verde-oscuro); letter-spacing: 4px; font-size: 0.95rem; font-weight: 700; margin-bottom: 15px;">MIS PADRINOS</p>
                 <p style="font-family: var(--fuente-titulos); font-size: 1.8rem; line-height: 1.4; color: var(--texto-oscuro);">Paola Viridiana Valdez Lemus<br><span style="font-size:1.4rem; font-style:italic; color:var(--verde-cemento);">&</span><br>Daniel Ignacio Martínez Sánchez</p>
             </div>
@@ -595,4 +594,4 @@
     </script>
 </body>
 </html>
-```<FollowUp label="¿Quieres que hagamos algún otro ajuste visual o de funcionamiento?" query="¿Quieres que hagamos algún otro ajuste visual o de funcionamiento en la invitación?"/>
+```<FollowUp label="¿Qué te parece este nuevo tono verde cemento?" query="¿Qué te parece este nuevo tono de verde cemento para la invitación?"/>
